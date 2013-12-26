@@ -1,4 +1,5 @@
 #!/bin/zsh
+# https://gist.github.com/ihashacks/4576452
 # end and compare timer, notify-send if needed
 function notifyosd-precmd() {
     if [ ! -z "$cmd" ]; then
