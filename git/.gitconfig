@@ -1,0 +1,47 @@
+[user]
+	name = William Delanoue
+	email = william.delanoue@deveryware.net
+
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+        ui = auto
+
+[alias]
+	last = cat-file commit HEAD
+        ll=log --graph --decorate --pretty=oneline --abbrev-commit
+        wdiff = diff --word-diff
+        mydiff=diff -C -w
+	revno=git log --format=%h -n 1
+	lgb=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+	ignored=status --ignored
+        oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-develop}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+
+[rerere]
+	enabled = 1
+
+# commands will be autocorrect (rset -> reset)
+[help]
+    autocorrect = -1
+
+[push]
+	default = simple
+
+# pull will do a rebase instead of a merge
+[pull]
+	rebase = true
+
+# vim as editor and less as pager
+[core]
+	autocrlf = input
+	editor = vim
+	pager = less
+	excludesfile = ~/.gitignore_global
+
+
+# diff with meaningful prefix and word-diff will find a letter as a word
+[diff]
+  mnemonicprefix = true
+  wordRegex = .
