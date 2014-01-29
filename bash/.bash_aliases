@@ -110,8 +110,12 @@ alias rsync="rsync --progress"
 export M2_HOME=/usr/local/java/apache-maven-3.0
 alias cpuperf='for i in "0 1 2 3 4 5 6 7" ; do sudo cpufreq-set -c $i -g performance ; echo $i ; done'
 
+alias dockerip='docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; docker inspect $cid | grep IPAddress | cut -d \" -f 4; done'
+alias battery_stat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+
 test -d ~/.nvm && source ~/.nvm/nvm.sh
 
 export PROJETS=~/Projets
 
 test -r ~/.perso_aliases && source ~/.perso_aliases
+

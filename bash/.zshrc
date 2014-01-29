@@ -33,6 +33,9 @@ CASE_SENSITIVE="true"
 #plugins=(git autojump command-not-found mvn)
 plugins=(git command-not-found mvn docker scala sbt ant github git-extras gitignore)
 
+# Report CPU usage for commands running longer than 10 seconds
+REPORTTIME=10
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -56,4 +59,7 @@ fi
 if [ -f ~/notifyosd.zsh ]; then
     . ~/notifyosd.zsh 
 fi
-source ~/.rbenvrc
+
+if [ -f ~/.rbenvrc ]; then
+    source ~/.rbenvrc
+fi
