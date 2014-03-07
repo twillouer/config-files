@@ -13,3 +13,4 @@ do
     ln -s "$PWD/$i" $HOME
 done
 
+ln -s "$PWD/.screenrc" $HOME
