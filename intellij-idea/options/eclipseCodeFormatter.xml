@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="EclipseCodeFormatterSettings">
+    <option name="settingsList">
+      <list>
+        <Settings>
+          <option name="defaultSettings" value="true" />
+          <option name="id" value="1368651469948" />
+          <option name="name" value="default" />
+        </Settings>
+        <Settings>
+          <option name="formatter" value="ECLIPSE" />
+          <option name="id" value="1368651517667" />
+          <option name="name" value="assertj" />
+          <option name="pathToConfigFileJava" value="$USER_HOME$/workspace-assertj/assertj-core/src/formatters/assertj-eclipse-formatter.xml" />
+          <option name="selectedJavaProfile" value="assertj" />
+        </Settings>
+        <Settings>
+          <option name="formatter" value="ECLIPSE" />
+          <option name="id" value="1368714004843" />
+          <option name="importOrder" value="com.deveryware;\#com.deveryware;com;\#com;junit;\#junit;net;\#net;org;\#org;groovy;\#groovy;java;\#java;javax;\#javax;lombok;edu;\#; " />
+          <option name="importOrderConfigFilePath" value="$USER_HOME$/Projets/documents-dev/development/settings/code-style/dw.idea.importorder" />
+          <option name="name" value="DW" />
+          <option name="pathToConfigFileJava" value="$USER_HOME$/Projets/documents-dev/development/settings/code-style/dw-eclipse-format-java.xml" />
+          <option name="selectedJavaProfile" value="Deveryware" />
+        </Settings>
+      </list>
+    </option>
+  </component>
+</application>
+
