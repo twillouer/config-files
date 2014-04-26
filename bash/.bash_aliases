@@ -1,11 +1,10 @@
 alias use="mysql -h 127.0.0.1 -u root"
 alias playf="/usr/local/java/play/play"
-alias idea=~/bin/idea.sh
 alias bzip2="pbzip2"
 
 alias junitfailure='grep -P "(Errors|Failures): [1-9]"'
 
-alias mavenjunitfailure='grep -P "(Errors|Failures): [1-9]" target/surefire-reports/*.txt'
+alias mavenjunitfailure='grep -P "(Errors|Failures): [1-9]" **/target/surefire-reports/*.txt'
 alias maventests='for i in `find . -type d -name surefire-reports` ; do echo $i : `grep "Tests run: " $i/*.txt | cut -d " " -f 3 | tr -s "\n" " " | sed -e "s/,/ +/g" -e "s/$/0\n/" | bc` ; done'
 alias topmemproc='ps aux|head -1;ps aux |tail -n+1 |sort -nrk4 |head -$(($(tput lines)-2)) |cut -c 1-$(tput cols)' # Alias with header 
 alias ducks='du -cms * .* | sort -rn | head'
@@ -107,6 +106,7 @@ alias rsync="rsync --progress"
 #  - http://root.abl.es/methods/1504/automatic-unzipuntar-using-correct-tool/
 #  - http://forum.ubuntu-fr.org/viewtopic.php?id=20437&p=3
 
+#export M2_HOME=/usr/local/java/apache-maven-3.1.0
 export M2_HOME=/usr/local/java/apache-maven-3.0
 alias cpuperf='for i in "0 1 2 3 4 5 6 7" ; do sudo cpufreq-set -c $i -g performance ; echo $i ; done'
 
@@ -119,3 +119,5 @@ export PROJETS=~/Projets
 
 test -r ~/.perso_aliases && source ~/.perso_aliases
 
+#https://gist.github.com/lelandbatey/8677901
+alias whiteboard='convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"'

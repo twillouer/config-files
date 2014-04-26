@@ -13,6 +13,8 @@ do
     ln -s "$PWD/$i" $HOME
 done
 
+ln -s "$PWD/.gconf/apps/guake" $HOME/.gconf/apps
+
 ln -s "$PWD/.screenrc" $HOME
 
 if [ ! -d ~/.oh-my-zsh ] ;
