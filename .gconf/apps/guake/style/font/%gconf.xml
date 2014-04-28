@@ -6,7 +6,7 @@
 	<entry name="color" mtime="1388191572" type="string">
 		<stringvalue>#3feed80018a8</stringvalue>
 	</entry>
-	<entry name="palette" mtime="1389388652" type="string">
+	<entry name="palette" mtime="1398693698" type="string">
 		<stringvalue>#000000000000:#aaaa00000000:#0000aaaa0000:#aaaa55550000:#00000000aaaa:#aaaa0000aaaa:#0000aaaaaaaa:#aaaaaaaaaaaa:#555555555555:#ffff55555555:#5555ffff5555:#ffffffff5555:#55555555ffff:#ffff5555ffff:#5555ffffffff:#ffffffffffff</stringvalue>
 	</entry>
 </gconf>
