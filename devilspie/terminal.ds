@@ -1,0 +1,8 @@
+(if
+(matches (window_name) "william@william:.*")
+(begin
+(undecorate)
+(geometry "964×780")
+(maximize)
+)
+)

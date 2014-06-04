@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="next_tab" mtime="1400570352" type="string">
+		<stringvalue>&lt;Primary&gt;Page_Down</stringvalue>
+	</entry>
+</gconf>

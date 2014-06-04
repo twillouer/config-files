@@ -31,7 +31,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
-plugins=(git command-not-found mvn docker scala sbt ant github git-extras gitignore)
+plugins=(git command-not-found mvn docker scala sbt ant github git-extras gitignore pip gem rbenv)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10

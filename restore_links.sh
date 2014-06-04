@@ -27,3 +27,5 @@ then
   git clone git@github.com:twillouer/vim-config.git ~/.vim
   ln -s ~/.vim/vimrc ~/.vimrc
 fi
+
+ln -s "$PWD/devilspie" $HOME/.devilspie

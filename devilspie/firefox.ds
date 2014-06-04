@@ -1,0 +1,8 @@
+(if
+(matches (window_name) ".*Mozilla Firefox")
+(begin
+(undecorate)
+(geometry "964×780")
+(maximize)
+)
+)
