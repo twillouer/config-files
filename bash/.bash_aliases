@@ -13,6 +13,14 @@ scp(){ if [[ "$@" =~ : ]];then /usr/bin/scp "$@" && notify-send scp "Transfert t
 vin(){ vi `find . -name $@`;}
 alias myip='curl ifconfig.me'
 
+# Curl
+alias get='curl -X GET -H "Accept:application/json"'
+alias post='curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" -d'
+alias put='curl -X PUT -H "Accept:application/json" -H "Content-Type:application/json" -d'
+alias patch='curl -X PATCH -H "Accept:application/json" -H "Content-Type:application/json" -d'
+alias delete='curl -X DELETE -H "Content-Type:application/json"'
+alias options='curl -X OPTIONS -H "Content-Type:application/json"'
+alias json='curl -H "Accept: application/json" -L'
 
 export ANDROID_HOME=/usr/local/java/android-sdk-linux_x86/
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -121,3 +129,7 @@ test -r ~/.perso_aliases && source ~/.perso_aliases
 
 #https://gist.github.com/lelandbatey/8677901
 alias whiteboard='convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"'
+
+
+export SBT_OPTS=-XX:MaxPermSize=256m
+
