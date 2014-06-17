@@ -31,7 +31,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
-plugins=(git command-not-found mvn docker scala sbt ant github git-extras gitignore pip gem rbenv)
+plugins=(git command-not-found mvn docker scala sbt ant github git-extras gitignore pip gem rbenv jsontools)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
@@ -42,7 +42,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 
-PROMPT='%B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
+PROMPT='(%M) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
+#PROMPT='%B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
 #PROMPT='%B%F{green}%n@%M %b%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
 
 
