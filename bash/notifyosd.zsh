@@ -1,4 +1,8 @@
 #!/bin/zsh
+
+if [ ! -r "/usr/bin/notify-send" ] ; then 
+  exit
+fi
 # https://gist.github.com/ihashacks/4576452
 # commands to ignore
 cmdignore=(vim top htop)
