@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="window_height" mtime="1388191397" type="int" value="96"/>
+	<entry name="window_height" mtime="1405923376" type="int" value="92"/>
 	<entry name="open_tab_cwd" mtime="1388191389" type="bool" value="true"/>
-	<entry name="compat_backspace" mtime="1401862479" type="string">
+	<entry name="compat_backspace" mtime="1410450742" type="string">
 		<stringvalue>ascii-delete</stringvalue>
 	</entry>
 	<entry name="use_default_font" mtime="1388331357" type="bool" value="false"/>
-	<entry name="scroll_keystroke" mtime="1401862479" type="bool" value="true"/>
-	<entry name="history_size" mtime="1401862479" type="int" value="8000"/>
-	<entry name="use_scrollbar" mtime="1401862479" type="bool" value="true"/>
-	<entry name="window_tabbar" mtime="1401862479" type="bool" value="true"/>
+	<entry name="scroll_keystroke" mtime="1410450742" type="bool" value="true"/>
+	<entry name="history_size" mtime="1410450742" type="int" value="12000"/>
+	<entry name="use_scrollbar" mtime="1410450742" type="bool" value="true"/>
+	<entry name="window_tabbar" mtime="1410450742" type="bool" value="true"/>
 	<entry name="window_losefocus" mtime="1388757692" type="bool" value="true"/>
-	<entry name="prompt_on_quit" mtime="1401862479" type="bool" value="true"/>
-	<entry name="use_popup" mtime="1401862479" type="bool" value="true"/>
-	<entry name="use_trayicon" mtime="1401862479" type="bool" value="true"/>
+	<entry name="prompt_on_quit" mtime="1410450742" type="bool" value="true"/>
+	<entry name="use_popup" mtime="1410450742" type="bool" value="true"/>
+	<entry name="use_trayicon" mtime="1410450742" type="bool" value="true"/>
 </gconf>

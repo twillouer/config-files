@@ -48,6 +48,9 @@ PROMPT='(%M) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue
 
 
 hash -d prj=~/Projets
+hash -d doc=~/Projets/documents
+hash -d mpa=~/Projets/mypublicalerts
+hash -d docprj=~/Projets/documents/projets
 hash -d flow=~/Projets/deveryflow
 hash -d dloc=~/Projets/deveryloc
 hash -d dauth=~/Projets/deveryauth
