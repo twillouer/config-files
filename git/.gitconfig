@@ -9,6 +9,9 @@
 	diff = auto
         ui = auto
 
+[color "branch"]
+	upstream = cyan
+
 [alias]
 	last = cat-file commit HEAD
         ll=log --graph --decorate --pretty=oneline --abbrev-commit
@@ -46,3 +49,5 @@
 [diff]
   mnemonicprefix = true
   wordRegex = .
+[status]
+	showUntrackedFiles = all
