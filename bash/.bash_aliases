@@ -7,7 +7,7 @@ alias junitfailure='grep -P "(Errors|Failures): [1-9]"'
 alias mavenjunitfailure='grep -P "(Errors|Failures): [1-9]" **/target/surefire-reports/*.txt'
 alias maventests='for i in `find . -type d -name surefire-reports` ; do echo $i : `grep "Tests run: " $i/*.txt | cut -d " " -f 3 | tr -s "\n" " " | sed -e "s/,/ +/g" -e "s/$/0\n/" | bc` ; done'
 alias topmemproc='ps aux|head -1;ps aux |tail -n+1 |sort -nrk4 |head -$(($(tput lines)-2)) |cut -c 1-$(tput cols)' # Alias with header 
-alias ducks='du -cms -- * .* | sort -rn | head'
+alias ducks='du -cms -- * .* | sort -rn | head || du -cms -- * | sort -rn | head'
 alias cpuinfo=" cpufreq-info | grep -P 'comprise entre|actuelle' | grep -e '[0-9.]*'" 
 scp(){ if [[ "$@" =~ : ]];then /usr/bin/scp "$@" && notify-send scp "Transfert terminé" ; else echo 'You forgot the colon dumbass!'>&2 ; return 1; fi;}
 vin(){ vi `find . -name $@`;}
@@ -33,6 +33,8 @@ alias ll='ls -latr --color'
 alias grin='grep -Hrn'
 alias fin="find . -name"
 alias finsrc="find src -name"
+
+alias addtime='xargs -d"\n" -I {} date +"%Y-%m-%d %H:%M:%S {}"'
 
 
 
@@ -110,18 +112,28 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias mkcd="mkcd"
 alias rsync="rsync --progress"
 
+alias gff="git fetch -p --all"
+
+# Vagrant
+alias v='vagrant version && vagrant global-status'
+alias vst='vagrant status'
+alias vup='vagrant up'
+alias vdo='vagrant halt'
+alias vssh='vagrant ssh'
+alias vkill='vagrant destroy'
+
 # Sources : 
 #  - http://root.abl.es/methods/1504/automatic-unzipuntar-using-correct-tool/
 #  - http://forum.ubuntu-fr.org/viewtopic.php?id=20437&p=3
 
 #export M2_HOME=/usr/local/java/apache-maven-3.1.0
-export M2_HOME=/usr/local/java/apache-maven-3.0
+export M2_HOME=/usr/local/java/apache-maven-3.2.3
 alias cpuperf='for i in "0 1 2 3 4 5 6 7" ; do sudo cpufreq-set -c $i -g performance ; echo $i ; done'
 
 alias dockerip='docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; docker inspect $cid | grep IPAddress | cut -d \" -f 4; done'
 alias battery_stat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
-test -d ~/.nvm && source ~/.nvm/nvm.sh
+test -d ~/.nvm/mvn.sh && source ~/.nvm/nvm.sh
 
 export PROJETS=~/Projets
 

@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 <gconf>
+	<entry name="palette_name" mtime="1432116505" type="string">
+		<stringvalue>Tango</stringvalue>
+	</entry>
 	<entry name="style" mtime="1410450747" type="string">
 		<stringvalue>Monospace 11</stringvalue>
 	</entry>
 	<entry name="color" mtime="1388191572" type="string">
 		<stringvalue>#3feed80018a8</stringvalue>
 	</entry>
-	<entry name="palette" mtime="1410450742" type="string">
-		<stringvalue>#000000000000:#aaaa00000000:#0000aaaa0000:#aaaa55550000:#00000000aaaa:#aaaa0000aaaa:#0000aaaaaaaa:#aaaaaaaaaaaa:#555555555555:#ffff55555555:#5555ffff5555:#ffffffff5555:#55555555ffff:#ffff5555ffff:#5555ffffffff:#ffffffffffff</stringvalue>
+	<entry name="palette" mtime="1432116505" type="string">
+		<stringvalue>#000000000000:#cccc00000000:#4e4e9a9a0606:#c4c4a0a00000:#34346565a4a4:#757550507b7b:#060698209a9a:#d3d3d7d7cfcf:#555557575353:#efef29292929:#8a8ae2e23434:#fcfce9e94f4f:#72729f9fcfcf:#adad7f7fa8a8:#3434e2e2e2e2:#eeeeeeeeecec:#ffffffffffff:#000000000000</stringvalue>
 	</entry>
 </gconf>

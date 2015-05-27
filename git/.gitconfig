@@ -24,11 +24,11 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 
 [rerere]
-	enabled = 1
+	enabled = 0
 
 # commands will be autocorrect (rset -> reset)
 [help]
-    autocorrect = -1
+	autocorrect = -1
 
 [push]
 	default = simple
@@ -47,7 +47,8 @@
 
 # diff with meaningful prefix and word-diff will find a letter as a word
 [diff]
-  mnemonicprefix = true
-  wordRegex = .
+	mnemonicprefix = true
+	wordRegex = .
+
 [status]
 	showUntrackedFiles = all
