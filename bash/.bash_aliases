@@ -12,6 +12,7 @@ alias cpuinfo=" cpufreq-info | grep -P 'comprise entre|actuelle' | grep -e '[0-9
 scp(){ if [[ "$@" =~ : ]];then /usr/bin/scp "$@" && notify-send scp "Transfert terminé" ; else echo 'You forgot the colon dumbass!'>&2 ; return 1; fi;}
 vin(){ vi `find . -name $@`;}
 alias myip='curl ifconfig.me'
+alias free="LANG=C free"
 
 # Curl
 alias get='curl -X GET -H "Accept:application/json"'
@@ -113,6 +114,7 @@ alias mkcd="mkcd"
 alias rsync="rsync --progress"
 
 alias gff="git fetch -p --all"
+alias gbr='git for-each-ref --sort="-authordate:iso8601" --format=" %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)" refs/heads'
 
 # Vagrant
 alias v='vagrant version && vagrant global-status'

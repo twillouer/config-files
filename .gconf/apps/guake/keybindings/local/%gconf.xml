@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <gconf>
+	<entry name="rename_current_tab" mtime="1433365372" type="string">
+		<stringvalue>&lt;Shift&gt;F8</stringvalue>
+	</entry>
 	<entry name="next_tab" mtime="1401860127" type="string">
 		<stringvalue>&lt;Primary&gt;Page_Down</stringvalue>
 	</entry>

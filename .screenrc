@@ -5,14 +5,14 @@ termcapinfo xterm* ti@:te@
 
 startup_message off
 
-caption always
+#caption always
 
 # Caption JCK (met en évidence %{=b kg} le screen actif [%n %t]
 # puis la liste des autres screen %{=s ky}%W
 # affiché à droite %=
 # le nom de la machine %{=b}%H 
 # et l'heure %{=s}%c sont affichés
-caption string "%{=b kg} [%n %t] %{=s ky}%W  %= %{=b}%H %{=s}%c "
+#caption string "%{=b kg} [%n %t] %{=s ky}%W  %= %{=b}%H %{=s}%c "
 
 altscreen on
 term screen-256color
@@ -25,5 +25,5 @@ term screen-256color
 #change the hardstatus settings to give an window list at the bottom of the
 #screen, with the time and date and with the current window highlighted
 hardstatus alwayslastline
-#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %{G}[%l] %{B}%m-%d %{W}%c %{g}]'
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
