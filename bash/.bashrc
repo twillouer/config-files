@@ -109,9 +109,6 @@ fi
 #alias mvn3="M2_HOME="/usr/local/java/apache-maven-3.0" /usr/local/bin/mvn3"
 
 
-export SCALA_HOME=/usr/local/scala/scala-2.9
-export PATH=$SCALA_HOME/bin:$PATH
-
 export MAVEN_OPTS="-Xmx2048m -Xms512m"
 
 #alias mvn="mvn -T4.0C"
