@@ -29,3 +29,4 @@ then
 fi
 
 ln -s "$PWD/devilspie" $HOME/.devilspie
+ln -s "$PWD/mysql/.my.cnf" $HOME/.my.cnf
