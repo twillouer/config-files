@@ -52,12 +52,14 @@ hash -d doc=~/Projets/documents
 hash -d mpa=~/Projets/mypublicalerts
 hash -d docprj=~/Projets/documents/projets
 hash -d flow=~/Projets/deveryflow
+hash -d front=~/Projets/deveryfront
 hash -d dloc=~/Projets/deveryloc
 hash -d dgo=~/Projets/deverygo
 hash -d dutils=~/Projets/deveryutils
 hash -d dauth=~/Projets/deveryauth
 hash -d tram=~/Projets/tram
 hash -d bazar=~/Projets/bazar
+hash -d fongo=~/src/fongo
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
