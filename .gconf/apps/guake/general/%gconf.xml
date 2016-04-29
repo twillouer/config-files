@@ -16,7 +16,7 @@
 	</entry>
 	<entry name="window_halignment" mtime="1454767715" type="int" value="0"/>
 	<entry name="window_width" mtime="1454767715" type="int" value="100"/>
-	<entry name="window_height" mtime="1459763088" type="int" value="138"/>
+	<entry name="window_height" mtime="1459945733" type="int" value="136"/>
 	<entry name="open_tab_cwd" mtime="1454767715" type="bool" value="true"/>
 	<entry name="use_default_font" mtime="1454176314" type="bool" value="false"/>
 	<entry name="scroll_keystroke" mtime="1454767715" type="bool" value="true"/>
