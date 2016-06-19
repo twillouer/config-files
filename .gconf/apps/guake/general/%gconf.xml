@@ -5,7 +5,7 @@
 		<stringvalue>ascii-delete</stringvalue>
 	</entry>
 	<entry name="quick_open_enable" mtime="1433365355" type="bool" value="false"/>
-	<entry name="window_height_f" mtime="1454767715" type="float" value="94.351900000000001"/>
+	<entry name="window_height_f" mtime="1466156904" type="float" value="96.018518518518519"/>
 	<entry name="use_palette_font_and_background_color" mtime="1454767715" type="bool" value="true"/>
 	<entry name="window_width_f" mtime="1454767715" type="float" value="100"/>
 	<entry name="prompt_on_close_tab" mtime="1454767715" type="int" value="1"/>
@@ -16,7 +16,7 @@
 	</entry>
 	<entry name="window_halignment" mtime="1454767715" type="int" value="0"/>
 	<entry name="window_width" mtime="1454767715" type="int" value="100"/>
-	<entry name="window_height" mtime="1459945733" type="int" value="136"/>
+	<entry name="window_height" mtime="1466156904" type="int" value="96"/>
 	<entry name="open_tab_cwd" mtime="1454767715" type="bool" value="true"/>
 	<entry name="use_default_font" mtime="1454176314" type="bool" value="false"/>
 	<entry name="scroll_keystroke" mtime="1454767715" type="bool" value="true"/>

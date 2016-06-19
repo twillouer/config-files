@@ -148,6 +148,7 @@ test -r ~/.perso_aliases && source ~/.perso_aliases
 alias whiteboard='convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"'
 
 alias os_numergy_geohub=". <(gpg -qd ~/bin/numergy_openstash.sh.gpg)"
+alias os_numergy_appgeohub=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
 
 export SBT_OPTS=-XX:MaxPermSize=256m
 #alias terraform='DOCKER_HOST= docker run --rm --net=host --user=$UID:$GID -v $PWD:/data -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -ti uzyexe/terraform'
@@ -160,3 +161,14 @@ alias glance-add-iso='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_
 export MYSQL_PS1="\u@\h \d > "
 
 export PACKER_CACHE_DIR=${HOME}/packer_cache
+
+# FlameGraph
+
+if [ -d ~/src/perf-map-agent/bin ] ;
+then
+ export FLAMEGRAPH_DIR=~/src/FlameGraph
+ export PERF_RECORD_SECONDS=60
+ export PATH=$PATH:~/src/perf-map-agent/bin
+fi
+
+alias generate_password='cat /dev/urandom | tr -dc A-Z-a-z-0-9 | head -c${1:-16} ; echo'
