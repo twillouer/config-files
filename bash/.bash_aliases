@@ -129,7 +129,7 @@ alias vkill='vagrant destroy'
 #  - http://forum.ubuntu-fr.org/viewtopic.php?id=20437&p=3
 
 #export M2_HOME=/usr/local/java/apache-maven-3.1.0
-export M2_HOME=/usr/local/java/apache-maven-3.2.3
+export M2_HOME=/usr/local/java/apache-maven-3
 alias cpuperf='for i in "0 1 2 3 4 5 6 7" ; do sudo cpufreq-set -c $i -g performance ; echo $i ; done'
 
 alias dockerip='docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; docker inspect $cid | grep IPAddress | cut -d \" -f 4; done'
@@ -141,14 +141,17 @@ alias jjabber="cd ~/.purple/logs/jabber/wd-dw@jabber.deveryware.net"
 test -d ~/.nvm/mvn.sh && source ~/.nvm/nvm.sh
 
 export PROJETS=~/Projets
+export DOCUMENT_DIR=~/Projets/documents
 
 test -r ~/.perso_aliases && source ~/.perso_aliases
 
 #https://gist.github.com/lelandbatey/8677901
 alias whiteboard='convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"'
 
-alias os_numergy_geohub=". <(gpg -qd ~/bin/numergy_openstash.sh.gpg)"
-alias os_numergy_appgeohub=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
+alias geohub_numergy=". <(gpg -qd ~/bin/numergy_openstask.sh.gpg)"
+alias appgeohub_numergy=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
+alias ovh_gra1=". <(gpg -qd ~/bin/ovh_openstack.sh.gpg)"
+alias ovh2_gra1=". <(gpg -qd ~/bin/ovh_openstack2.sh.gpg)"
 
 export SBT_OPTS=-XX:MaxPermSize=256m
 #alias terraform='DOCKER_HOST= docker run --rm --net=host --user=$UID:$GID -v $PWD:/data -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -ti uzyexe/terraform'
@@ -172,3 +175,14 @@ then
 fi
 
 alias generate_password='cat /dev/urandom | tr -dc A-Z-a-z-0-9 | head -c${1:-16} ; echo'
+
+#!/bin/bash
+
+function whereis_f() { 
+   grep -E "srv-gh|$2" "$HOME/Projets/deploy-geohub/configs/config-geohub/$1.yaml" | grep -B1 "$2"
+}
+
+
+alias whereis="whereis_f pf4-pa3"
+alias whereis_opn="whereis_f openstack"
+

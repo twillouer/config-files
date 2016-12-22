@@ -31,7 +31,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
-plugins=(git command-not-found mvn docker docker-compose scala sbt ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump)
+plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
@@ -72,3 +72,7 @@ fi
 if [ -f ~/.rbenvrc ]; then
     source ~/.rbenvrc
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/william/.sdkman"
+[[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"

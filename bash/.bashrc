@@ -129,3 +129,7 @@ export EDITOR=vim
 #fi
 
 source ~/.rbenvrc
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/william/.sdkman"
+[[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
