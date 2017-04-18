@@ -26,7 +26,7 @@ alias json='curl -H "Accept: application/json" -L'
 export ANDROID_HOME=/usr/local/java/android-sdk-linux_x86/
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-export MAVEN_OPTS="-Xmx2048m -Xms512m"
+export MAVEN_OPTS="-Xmx2048m -Xms512m  -Djava.awt.headless=true"
 
 alias ll='ls -latr --color'
 
@@ -152,6 +152,8 @@ alias geohub_numergy=". <(gpg -qd ~/bin/numergy_openstask.sh.gpg)"
 alias appgeohub_numergy=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
 alias ovh_gra1=". <(gpg -qd ~/bin/ovh_openstack.sh.gpg)"
 alias ovh2_gra1=". <(gpg -qd ~/bin/ovh_openstack2.sh.gpg)"
+alias jenkins_geohub_numergy=". <(gpg -qd ~/bin/jenkins_numergy_openstack.sh.gpg)"
+alias coffre_fort_numergy=". <(gpg -qd ~/bin/dev-coffre-fort-openrc.sh.gpg)"
 
 export SBT_OPTS=-XX:MaxPermSize=256m
 #alias terraform='DOCKER_HOST= docker run --rm --net=host --user=$UID:$GID -v $PWD:/data -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -ti uzyexe/terraform'
@@ -186,3 +188,17 @@ function whereis_f() {
 alias whereis="whereis_f pf4-pa3"
 alias whereis_opn="whereis_f openstack"
 
+PATH=$PATH:~/.local/bin
+mr () {
+#	assigneeTrigraph=$1
+#	targetBranch=${2:-master}
+	targetBranch=${1:-master}
+	sourceBranch=$(git rev-parse --abbrev-ref HEAD)
+#	assigneeId=$(gitlab user list --per-page 10000 | grep "\b${assigneeTrigraph}\b" -B 1 | sed -n 's/id: //p')
+	projectName=$(git config --get remote.origin.url | sed -e 's/git@forge.deverywa.re://' -e 's/.git//')
+	projectId=$(gitlab project get --id $projectName | sed -n 's/id: //p' )
+	titleCaseTitle=$(python -c "print '$sourceBranch'.title()")
+#	gitlab project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --assignee-id $assigneeId
+	gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle
+#gitlab -v project-merge-request get --project-id $projectId --id 4531
+}

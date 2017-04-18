@@ -31,7 +31,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
-plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo)
+plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
@@ -48,9 +48,11 @@ PROMPT='(%M) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue
 
 
 hash -d prj=~/Projets
-hash -d doc=~/Projets/documents
 hash -d mpa=~/Projets/mypublicalerts
+hash -d doc=~/Projets/documents
 hash -d docprj=~/Projets/documents/projets
+hash -d docreu=~/Projets/documents/reunions/hebdomadaireDT
+hash -d docgeo=~/Projets/documents/projets/geohub
 hash -d flow=~/Projets/deveryflow
 hash -d front=~/Projets/deveryfront
 hash -d dloc=~/Projets/deveryloc
@@ -76,3 +78,13 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/william/.sdkman"
 [[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
+
+if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+# Load the custom .*-pass I have
+for i in ~/.dwlt-team ; do
+  [ -e $i/.load.zsh ] && source $i/.load.zsh
+done
+

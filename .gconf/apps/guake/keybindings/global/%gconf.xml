@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="show_hide" mtime="1469431783" type="string">
+	<entry name="show_hide" mtime="1490944985" type="string">
 		<stringvalue>twosuperior</stringvalue>
 	</entry>
 </gconf>
