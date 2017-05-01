@@ -88,3 +88,6 @@ for i in ~/.dwlt-team ; do
   [ -e $i/.load.zsh ] && source $i/.load.zsh
 done
 
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+#export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)

@@ -4,7 +4,7 @@ alias bzip2="pbzip2"
 
 alias junitfailure='grep -P "(Errors|Failures): [1-9]"'
 
-alias mavenjunitfailure='grep -P "(Errors|Failures): [1-9]" **/target/surefire-reports/*.txt'
+alias mavenjunitfailure='grep -P "(Errors|Failures): [1-9]" **/target/*-reports/*.txt'
 alias maventests='for i in `find . -type d -name surefire-reports` ; do echo $i : `grep "Tests run: " $i/*.txt | cut -d " " -f 3 | tr -s "\n" " " | sed -e "s/,/ +/g" -e "s/$/0\n/" | bc` ; done'
 alias topmemproc='ps aux|head -1;ps aux |tail -n+1 |sort -nrk4 |head -$(($(tput lines)-2)) |cut -c 1-$(tput cols)' # Alias with header 
 alias ducks='du -cms -- * .* | sort -rn | head || du -cms -- * | sort -rn | head'
