@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="allow_bold" mtime="1490944980" type="bool" value="true"/>
+	<entry name="allow_bold" mtime="1496425966" type="bool" value="true"/>
 	<entry name="palette_name" mtime="1490285971" type="string">
 		<stringvalue>Personnalisé</stringvalue>
 	</entry>

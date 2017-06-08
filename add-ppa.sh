@@ -1,3 +1,4 @@
+sudo add-apt-repository ppa:webupd8team/unstable
 sudo add-apt-repository ppa:mumble/release
 sudo add-apt-repository ppa:andreas-diesner/garminplugin
 sudo add-apt-repository ppa:ansible/ansible
@@ -45,6 +46,8 @@ sudo add-apt-repository ppa:xubuntu-dev/xfce-4.12
 
 sudo apt update
 
+sudo apt -y install guake
+
 sudo apt install -y mumble
 
 sudo apt install -y garminplugin
@@ -75,7 +78,8 @@ sudo apt -y install oracle-java7-installer
 sudo apt -y install oracle-java9-installer
 sudo apt -y install oracle-java8-installer
 
-sudo apt -y install terminix
+sudo apt -y install tilix
+
 
 sudo apt -y full-upgrade
 
