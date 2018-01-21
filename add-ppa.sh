@@ -30,10 +30,10 @@ wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.a
 sudo sh -c "echo \"deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) non-free contrib\" >> /etc/apt/sources.list.d/virtualbox.org.list"
 
 
-wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo  apt-key add -
-echo "deb http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
+#wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo  apt-key add -
+#echo "deb http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
 
-sudo add-apt-repository ppa:webupd8team/atom
+#sudo add-apt-repository ppa:webupd8team/atom
 
 sudo add-apt-repository ppa:webupd8team/java
 
@@ -46,7 +46,9 @@ sudo add-apt-repository ppa:xubuntu-dev/xfce-4.12
 
 sudo apt update
 
-sudo apt -y install guake
+sudo apt -y install vim
+
+#sudo apt -y install guake
 
 sudo apt install -y mumble
 
@@ -70,18 +72,24 @@ sudo apt -y install truecrypt
 
 sudo apt -y install virtualbox
 
-sudo apt -y install atom
+#sudo apt -y install atom
 
-sudo apt -y install vivaldi-stable
+#sudo apt -y install vivaldi-stable
 
 sudo apt -y install oracle-java7-installer 
-sudo apt -y install oracle-java9-installer
+#sudo apt -y install oracle-java9-installer
 sudo apt -y install oracle-java8-installer
 
-sudo apt -y install tilix
+sudo apt install -y tilix
+sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
+sudo apt install -y cpufrequtils
 
-sudo apt -y full-upgrade
+sudo apt install -y screen vim
+
+sudo apt full-upgrade -y
 
 sudo apt autoremove
 sudo apt autoclean
+
+

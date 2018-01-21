@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+HISTSIZE=100000
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -61,6 +62,8 @@ hash -d dutils=~/Projets/deveryutils
 hash -d dauth=~/Projets/deveryauth
 hash -d tram=~/Projets/tram
 hash -d bazar=~/Projets/bazar
+hash -d puppetd=~/Projets/puppet-deveryware
+hash -d ansibled=~/Projets/ansible-deveryware
 hash -d fongo=~/src/fongo
 
 if [ -f ~/.bash_aliases ]; then
@@ -75,19 +78,16 @@ if [ -f ~/.rbenvrc ]; then
     source ~/.rbenvrc
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/william/.sdkman"
-[[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
-
-if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
 # Load the custom .*-pass I have
 for i in ~/.dwlt-team ; do
   [ -e $i/.load.zsh ] && source $i/.load.zsh
 done
 
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-#export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-#export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/william/.sdkman"
+[[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+export PATH="$HOME/.tfenv/bin:$PATH"

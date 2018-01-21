@@ -178,15 +178,22 @@ fi
 
 alias generate_password='cat /dev/urandom | tr -dc A-Z-a-z-0-9 | head -c${1:-16} ; echo'
 
-#!/bin/bash
-
-function whereis_f() { 
-   grep -E "srv-gh|$2" "$HOME/Projets/deploy-geohub/configs/config-geohub/$1.yaml" | grep -B1 "$2"
+function gwhereis_f() { 
+   grep -A1000000000 places:  "$HOME/Projets/deploy-geohub/configs/config-geohub/$1.yaml" |  grep -E "srv-gh|$2"  | grep -B1 "$2"
 }
 
+alias gwhereis="gwhereis_f pf4-pa3"
+alias gwhereis_opn="gwhereis_f openstack"
 
-alias whereis="whereis_f pf4-pa3"
-alias whereis_opn="whereis_f openstack"
+function dns_f() {
+  grep -A4 -B3 -E "$1" ~/Projets/puppet-deveryware/hieradata/production/roles/dns_internal.yaml
+}
+alias dnsi="dns_f"
+
+function prx_f() {
+  grep -E "^prx|$1" ~/Projets/doc-pf4/02_Architecture/Liste_VMS_Hyperviseurs.txt | grep -B1 "$1" 
+}
+alias prx="prx_f"
 
 PATH=$PATH:~/.local/bin
 mr () {
@@ -194,11 +201,25 @@ mr () {
 #	targetBranch=${2:-master}
 	targetBranch=${1:-master}
 	sourceBranch=$(git rev-parse --abbrev-ref HEAD)
+        COUNT=$(git diff ${targetBranch} | wc -l)
+        if (( $COUNT == 0 ))
+        then
+          echo "nothing do to, no diff between this branch ${sourceBranch} and ${targetBranch}"
+        else
 #	assigneeId=$(gitlab user list --per-page 10000 | grep "\b${assigneeTrigraph}\b" -B 1 | sed -n 's/id: //p')
-	projectName=$(git config --get remote.origin.url | sed -e 's/git@forge.deverywa.re://' -e 's/.git//')
-	projectId=$(gitlab project get --id $projectName | sed -n 's/id: //p' )
-	titleCaseTitle=$(python -c "print '$sourceBranch'.title()")
-#	gitlab project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --assignee-id $assigneeId
-	gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle
+  	  projectName=$(git config --get remote.origin.url | sed -e 's/git@forge.deverywa.re://' -e 's/.git//')
+	  projectId=$(gitlab project get --id $projectName | sed -n 's/id: //p' )
+	  titleCaseTitle=$(python -c "print '$sourceBranch'.title()")
+#	  gitlab project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --assignee-id $assigneeId
+	  echo gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True
+	  gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True
 #gitlab -v project-merge-request get --project-id $projectId --id 4531
+       fi
 }
+
+alias mrp="git push -u origin \$(git symbolic-ref --short -q HEAD | tr -d '\n') && mr $*"
+
+#unset SSH_AGENT_PID
+#if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+#  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+#fi
