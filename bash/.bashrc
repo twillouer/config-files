@@ -115,6 +115,8 @@ export MAVEN_OPTS="-Xmx2048m -Xms512m"
 
 export EDITOR=vim
 
+function fromunix() { date -d@$1 }
+
 # Git http://blog.gitfr.net/post/1493065781/ameliorer-sa-productivite-avec-un-beau-shell
 #GIT_PS1_SHOWDIRTYSTATE=1
 #GIT_PS1_SHOWUNTRACKEDFILES=1

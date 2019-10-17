@@ -8,6 +8,7 @@ HISTSIZE=100000
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="kolo"
+ZSH_THEME="spaceship"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,18 +33,27 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
-plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv)
+#plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv)
+plugins=(git command-not-found mvn docker docker-compose screen git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv kubectl terraform systemd minikube kube-ps1)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
 
 source $ZSH/oh-my-zsh.sh
 
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # Customize to your needs...
 
 export EDITOR=vim
 
-PROMPT='(%M) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
+#PROMPT='($$(if [ \$? == 0 ]; then echo 😀; else echo 😱; fi)) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%} %% '
+#PROMPT='(%M) %B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%} %% '
+
+
 #PROMPT='%B%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
 #PROMPT='%B%F{green}%n@%M %b%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
 
@@ -87,7 +97,7 @@ done
 export SDKMAN_DIR="/home/william/.sdkman"
 [[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
 export PATH="$HOME/.tfenv/bin:$PATH"
+export PATH="$HOME/.pkenv/bin:$PATH"
+
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi

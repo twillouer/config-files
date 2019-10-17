@@ -1,8 +1,9 @@
-sudo add-apt-repository ppa:webupd8team/unstable
-sudo add-apt-repository ppa:mumble/release
-sudo add-apt-repository ppa:andreas-diesner/garminplugin
+#sudo add-apt-repository ppa:webupd8team/unstable
+#sudo add-apt-repository ppa:mumble/release
+#sudo add-apt-repository ppa:andreas-diesner/garminplugin
 sudo add-apt-repository ppa:ansible/ansible
-sudo add-apt-repository ppa:chromium-daily/stable
+#sudo add-apt-repository ppa:chromium-daily/stable
+sudo add-apt-repository ppa:git-core/ppa
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
@@ -16,7 +17,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/talkplugin/deb/ st
 wget -qO - https://download.jitsi.org/jitsi-key.gpg.key | sudo apt-key add -
 sudo sh -c "echo 'deb https://download.jitsi.org stable/' > /etc/apt/sources.list.d/jitsi-stable.list"
 
-sudo add-apt-repository ppa:linphone/release
+#sudo add-apt-repository ppa:linphone/release
 
 #sudo add-apt-repository ppa:modycz/heimdall
 
@@ -39,7 +40,9 @@ sudo add-apt-repository ppa:webupd8team/java
 
 sudo add-apt-repository ppa:webupd8team/terminix
 
-sudo add-apt-repository ppa:xubuntu-dev/xfce-4.12
+sudo add-apt-repository ppa:nextcloud-devs/client
+
+#sudo add-apt-repository ppa:xubuntu-dev/xfce-4.12
 
 # Go
 
@@ -49,6 +52,8 @@ sudo apt update
 sudo apt -y install vim
 
 #sudo apt -y install guake
+
+sudo apt install -y git 
 
 sudo apt install -y mumble
 
@@ -82,10 +87,13 @@ sudo apt -y install oracle-java8-installer
 
 sudo apt install -y tilix
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+sudo chmod +x /etc/profile.d/vte.sh
 
 sudo apt install -y cpufrequtils
 
 sudo apt install -y screen vim
+
+sudo apt install -y nextcloud-client 
 
 sudo apt full-upgrade -y
 

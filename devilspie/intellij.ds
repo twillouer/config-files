@@ -1,9 +1,0 @@
-(if
-(matches (window_name) ".*Intelli.*")
-(begin
-(undecorate)
-(geometry "964×780")
-(maximize)
-(set_workspace 1)
-)
-)

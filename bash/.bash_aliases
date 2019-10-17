@@ -29,6 +29,8 @@ PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export MAVEN_OPTS="-Xmx2048m -Xms512m  -Djava.awt.headless=true"
 
 alias ll='ls -latr --color'
+alias ip='ip --color'
+alias ipb='ip --color --brief'
 
 #alias mvn='/usr/local/bin/mvnc -T2.0C'
 alias grin='grep -Hrn'
@@ -152,16 +154,17 @@ alias geohub_numergy=". <(gpg -qd ~/bin/numergy_openstask.sh.gpg)"
 alias appgeohub_numergy=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
 alias ovh_gra1=". <(gpg -qd ~/bin/ovh_openstack.sh.gpg)"
 alias ovh2_gra1=". <(gpg -qd ~/bin/ovh_openstack2.sh.gpg)"
+alias opd_geohub=". <(gpg -qd ~/bin/geohub-integ-opd-openrc.sh.gpg)"
 alias jenkins_geohub_numergy=". <(gpg -qd ~/bin/jenkins_numergy_openstack.sh.gpg)"
 alias coffre_fort_numergy=". <(gpg -qd ~/bin/dev-coffre-fort-openrc.sh.gpg)"
 
 export SBT_OPTS=-XX:MaxPermSize=256m
 #alias terraform='DOCKER_HOST= docker run --rm --net=host --user=$UID:$GID -v $PWD:/data -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -ti uzyexe/terraform'
-alias nova='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient nova'
-alias neutron='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient neutron'
-alias openstack='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient openstack'
-alias glance='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -e OS_IMAGE_API_VERSION="1" -v $PWD:/data twillouer/mydocker:openstackclient'
-alias glance-add-iso='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -e OS_IMAGE_API_VERSION="1" -v $PWD:/data twillouer/mydocker:openstackclient glance image-create --progress --disk-format=qcow2 --name $1 --container-format=bare  --file /data/$2'
+#alias nova='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient nova'
+#alias neutron='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient neutron'
+#alias openstack='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" twillouer/mydocker:openstackclient openstack'
+#alias glance='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -e OS_IMAGE_API_VERSION="1" -v $PWD:/data twillouer/mydocker:openstackclient'
+#alias glance-add-iso='docker run --rm -ti --user=$UID:$GID  -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -e OS_IMAGE_API_VERSION="1" -v $PWD:/data twillouer/mydocker:openstackclient glance image-create --progress --disk-format=qcow2 --name $1 --container-format=bare  --file /data/$2'
 
 export MYSQL_PS1="\u@\h \d > "
 
@@ -183,7 +186,7 @@ function gwhereis_f() {
 }
 
 alias gwhereis="gwhereis_f pf4-pa3"
-alias gwhereis_opn="gwhereis_f openstack"
+alias gwhereis_opv="gwhereis_f opv"
 
 function dns_f() {
   grep -A4 -B3 -E "$1" ~/Projets/puppet-deveryware/hieradata/production/roles/dns_internal.yaml
@@ -219,7 +222,42 @@ mr () {
 
 alias mrp="git push -u origin \$(git symbolic-ref --short -q HEAD | tr -d '\n') && mr $*"
 
+_asyncprof() {
+  STRAT=${2:-cpu}
+  PROG=$1
+  TIME=${3:-60}
+  if [ "x$1" = "x" ] ;
+  then
+    echo Usage $0 <pgrep regexp> [strategy] [time in second]
+    echo "  strategy: cpu, alloc"
+  fi
+  set -x
+  ~/src/async-profiler/profiler.sh -e ${STRAT} -d ${TIME} -f /tmp/${PROG}-${STRAT}-$(date +"%Y%m%d-%H%M%S").svg $(pgrep -f "java.*${PROG}")
+}
+
+alias asyncprof=_asyncprof
+
 #unset SSH_AGENT_PID
 #if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 #  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 #fi
+
+
+# color for man https://russellparker.me/post/2018/02/23/adding-colors-to-man/
+export MANROFFOPT='-c'
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7)
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+
+export IBUS_ENABLE_SYNC_MODE=1
+
+alias k='kubectl'
+alias mk='/usr/local/bin/minikube'
+complete -F __start_kubectl k
+alias team='sudo systemctl start teamviewerd.service && (teamviewer >/dev/null 2>&1 && sudo systemctl stop teamviewerd.service &)'
