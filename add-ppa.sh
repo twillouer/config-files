@@ -5,6 +5,8 @@ sudo add-apt-repository ppa:ansible/ansible
 #sudo add-apt-repository ppa:chromium-daily/stable
 sudo add-apt-repository ppa:git-core/ppa
 
+sudo apt-get install -f curl git
+
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \

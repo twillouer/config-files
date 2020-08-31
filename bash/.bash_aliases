@@ -154,7 +154,9 @@ alias geohub_numergy=". <(gpg -qd ~/bin/numergy_openstask.sh.gpg)"
 alias appgeohub_numergy=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
 alias ovh_gra1=". <(gpg -qd ~/bin/ovh_openstack.sh.gpg)"
 alias ovh2_gra1=". <(gpg -qd ~/bin/ovh_openstack2.sh.gpg)"
-alias opd_geohub=". <(gpg -qd ~/bin/geohub-integ-opd-openrc.sh.gpg)"
+alias opdpa3_geohub=". <(gpg -qd ~/bin/geohub-integ-pa3-openrc.sh.gpg)"
+alias opdcdc_geohub=". <(gpg -qd ~/bin/geohub-integ-cdc-openrc.sh.gpg)"
+alias bazar_prod_gra5=". <(gpg -qd ~/bin/bazar-prod-ovh.sh.gpg)"
 alias jenkins_geohub_numergy=". <(gpg -qd ~/bin/jenkins_numergy_openstack.sh.gpg)"
 alias coffre_fort_numergy=". <(gpg -qd ~/bin/dev-coffre-fort-openrc.sh.gpg)"
 
@@ -189,7 +191,7 @@ alias gwhereis="gwhereis_f pf4-pa3"
 alias gwhereis_opv="gwhereis_f opv"
 
 function dns_f() {
-  grep -A4 -B3 -E "$1" ~/Projets/puppet-deveryware/hieradata/production/roles/dns_internal.yaml
+  grep -A4 -B3 -E "$1" ~/Projets/puppet5-deveryware/./data/production/roles/dns_internal.yaml
 }
 alias dnsi="dns_f"
 
@@ -257,7 +259,8 @@ export LESS_TERMCAP_mh=$(tput dim)
 
 export IBUS_ENABLE_SYNC_MODE=1
 
+export PATH=$PATH:~/Projets/deveryadmin2/./node_modules/.bin/
+
 alias k='kubectl'
 alias mk='/usr/local/bin/minikube'
 complete -F __start_kubectl k
-alias team='sudo systemctl start teamviewerd.service && (teamviewer >/dev/null 2>&1 && sudo systemctl stop teamviewerd.service &)'
