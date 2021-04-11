@@ -133,9 +133,11 @@ function fromunix() { date -d@$1 }
 source ~/.rbenvrc
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/william/.sdkman"
-[[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source $HOME/.config/broot/launcher/bash/br

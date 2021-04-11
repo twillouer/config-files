@@ -1,3 +1,12 @@
+# https://twitter.com/gAmUssA/status/1299741020763164674
+# to check start time : time zsh -i -c echo
+#
+#
+DISABLE_AUTO_UPDATE="true"
+
+# Enable profiling:
+zmodload zsh/zprof 
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 HISTSIZE=100000
@@ -34,7 +43,8 @@ CASE_SENSITIVE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump command-not-found mvn)
 #plugins=(git command-not-found mvn docker docker-compose screen scala sbt gradle ant github git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv)
-plugins=(git command-not-found mvn docker docker-compose screen git-extras gitignore pip gem rbenv jsontools vagrant autojump terraform sudo rsync virtualenv kubectl terraform systemd minikube kube-ps1)
+#plugins=(git command-not-found mvn docker docker-compose screen git-extras jsontools terraform sudo rsync kubectl terraform systemd thefuck)
+plugins=(gitfast command-not-found mvn docker docker-compose screen terraform sudo rsync kubectl terraform systemd)
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
@@ -59,7 +69,6 @@ export EDITOR=vim
 
 
 hash -d prj=~/Projets
-hash -d mpa=~/Projets/mypublicalerts
 hash -d doc=~/Projets/documents
 hash -d docprj=~/Projets/documents/projets
 hash -d docreu=~/Projets/documents/reunions/hebdomadaireDT
@@ -70,7 +79,6 @@ hash -d dloc=~/Projets/deveryloc
 hash -d dgo=~/Projets/deverygo
 hash -d dutils=~/Projets/deveryutils
 hash -d dauth=~/Projets/deveryauth
-hash -d tram=~/Projets/tram
 hash -d bazar=~/Projets/bazar
 hash -d puppetd=~/Projets/puppet-deveryware
 hash -d ansibled=~/Projets/ansible-deveryware
@@ -93,11 +101,18 @@ for i in ~/.dwlt-team ; do
   [ -e $i/.load.zsh ] && source $i/.load.zsh
 done
 
+export PATH="$HOME/.tfenv/bin:$PATH"
+export PATH="$HOME/.pkenv/bin:$PATH"
+
+# if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+unset JAVA_HOME
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/william/.sdkman"
 [[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
 
-export PATH="$HOME/.tfenv/bin:$PATH"
-export PATH="$HOME/.pkenv/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
-if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+source /home/william/.config/broot/launcher/bash/br

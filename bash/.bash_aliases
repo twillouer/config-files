@@ -147,18 +147,15 @@ export DOCUMENT_DIR=~/Projets/documents
 
 test -r ~/.perso_aliases && source ~/.perso_aliases
 
-#https://gist.github.com/lelandbatey/8677901
-alias whiteboard='convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"'
-
-alias geohub_numergy=". <(gpg -qd ~/bin/numergy_openstask.sh.gpg)"
-alias appgeohub_numergy=". <(gpg -qd ~/bin/deveryware_appgeohub-dw-openrc.sh.gpg)"
 alias ovh_gra1=". <(gpg -qd ~/bin/ovh_openstack.sh.gpg)"
 alias ovh2_gra1=". <(gpg -qd ~/bin/ovh_openstack2.sh.gpg)"
 alias opdpa3_geohub=". <(gpg -qd ~/bin/geohub-integ-pa3-openrc.sh.gpg)"
 alias opdcdc_geohub=". <(gpg -qd ~/bin/geohub-integ-cdc-openrc.sh.gpg)"
-alias bazar_prod_gra5=". <(gpg -qd ~/bin/bazar-prod-ovh.sh.gpg)"
-alias jenkins_geohub_numergy=". <(gpg -qd ~/bin/jenkins_numergy_openstack.sh.gpg)"
-alias coffre_fort_numergy=". <(gpg -qd ~/bin/dev-coffre-fort-openrc.sh.gpg)"
+alias bazarprod_pa3=". <(gpg -qd ~/bin/bazar-prod-pa3-openrc.sh.gpg)"
+alias bazarprod_cdc=". <(gpg -qd ~/bin/bazar-prod-cdc-openrc.sh.gpg)"
+alias geohubprod_pa3=". <(gpg -qd ~/bin/geohub-prod-pa3-openrc.sh.gpg)"
+alias geohubprod_cdc=". <(gpg -qd ~/bin/geohub-prod-cdc-openrc.sh.gpg)"
+function rprint() { scp "$1" raspberry3:pdf/ && ssh raspberry3 lpr pdf/"\"$1\"" && ssh raspberry3 rm pdf/"\"$1\"" }
 
 export SBT_OPTS=-XX:MaxPermSize=256m
 #alias terraform='DOCKER_HOST= docker run --rm --net=host --user=$UID:$GID -v $PWD:/data -e OS_AUTH_URL="$OS_AUTH_URL" -e OS_TENANT_ID="$OS_TENANT_ID" -e OS_TENANT_NAME="$OS_TENANT_NAME" -e OS_REGION_NAME="$OS_REGION_NAME" -e OS_USERNAME="$OS_USERNAME" -e OS_PASSWORD="$OS_PASSWORD" -ti uzyexe/terraform'
@@ -200,6 +197,15 @@ function prx_f() {
 }
 alias prx="prx_f"
 
+function tounixtime() { 
+	date -d "$*" "+%s" 
+}
+function fromunixtime() { 
+	date -d @$1 "+%Y-%m-%d %T" 
+}
+
+
+
 PATH=$PATH:~/.local/bin
 mr () {
 #	assigneeTrigraph=$1
@@ -217,7 +223,7 @@ mr () {
 	  titleCaseTitle=$(python -c "print '$sourceBranch'.title()")
 #	  gitlab project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --assignee-id $assigneeId
 	  echo gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True
-	  gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True
+	  gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True || gitlab -v project-merge-request list --project-id $projectId  --source-branch $sourceBranch --target-branch $targetBranch
 #gitlab -v project-merge-request get --project-id $projectId --id 4531
        fi
 }
@@ -259,8 +265,16 @@ export LESS_TERMCAP_mh=$(tput dim)
 
 export IBUS_ENABLE_SYNC_MODE=1
 
+
 export PATH=$PATH:~/Projets/deveryadmin2/./node_modules/.bin/
 
 alias k='kubectl'
 alias mk='/usr/local/bin/minikube'
 complete -F __start_kubectl k
+
+export NETBOX_PROVISIONNER_URL=netbox.service.infra.prx.prod.dwadm.in
+export NETBOX_PROVISIONNER_TOKEN=176602fbe39192b5934df9e98d5a33af67ba8c4b
+export NETBOX_SCHEME=https
+export JSON_EXPORT_PATH="$HOME/.netbox-db.json"
+
+ 
