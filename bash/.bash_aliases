@@ -278,3 +278,4 @@ export NETBOX_SCHEME=https
 export JSON_EXPORT_PATH="$HOME/.netbox-db.json"
 
  
+alias oprc="source /home/william/Projets/devops/openstack-rc-files/oprc"

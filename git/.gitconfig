@@ -1,6 +1,7 @@
 [user]
 	name = William Delanoue
 	email = william.delanoue@deveryware.net
+	signingkey = C05C44196DD20BA352B176EFE77059B58B25EEA5
 
 [color]
 	status = auto
@@ -14,16 +15,17 @@
 
 [alias]
 	last = cat-file commit HEAD
-        ll=log --graph --decorate --pretty=oneline --abbrev-commit
         wdiff = diff --word-diff
         mydiff=diff -C -w
 	revno=git log --format=%h -n 1
-	lgb=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
 	ignored=status --ignored
         oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-develop}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         co-pr = !sh -c 'git fetch $1 pull/$2/head:pr-$1-$2 && git checkout pr-$1-$2' -
 	co-mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+        ll=log --graph --decorate --pretty=oneline --abbrev-commit
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lol = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lgb=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
 
 
 [rerere]
@@ -67,3 +69,7 @@
 
 [rebase]
 	autoStash=true
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

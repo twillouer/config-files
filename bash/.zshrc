@@ -2,14 +2,15 @@
 # to check start time : time zsh -i -c echo
 #
 #
-DISABLE_AUTO_UPDATE="true"
 
 # Enable profiling:
-zmodload zsh/zprof 
+zmodload zsh/zprof
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 HISTSIZE=100000
+
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -27,7 +28,7 @@ ZSH_THEME="spaceship"
 CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -36,7 +37,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -101,6 +102,12 @@ for i in ~/.dwlt-team ; do
   [ -e $i/.load.zsh ] && source $i/.load.zsh
 done
 
+# Load the custom .*-team I have
+for i in ~/Projets/*-team; do
+  [ -e $i/.load.zsh ] && source $i/.load.zsh
+done
+
+
 export PATH="$HOME/.tfenv/bin:$PATH"
 export PATH="$HOME/.pkenv/bin:$PATH"
 
@@ -116,3 +123,5 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 
 source /home/william/.config/broot/launcher/bash/br
+
+unalias mvnd
