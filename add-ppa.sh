@@ -33,6 +33,12 @@ wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.a
 sudo sh -c "echo \"deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) non-free contrib\" >> /etc/apt/sources.list.d/virtualbox.org.list"
 
 
+# Fingerprint
+# https://github.com/uunicorn/python-validity
+sudo add-apt-repository ppa:uunicorn/open-fprintd
+sudo apt-get update
+sudo apt install open-fprintd fprintd-clients python3-validity
+
 #wget -q -O - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo  apt-key add -
 #echo "deb http://repo.vivaldi.com/stable/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
 
