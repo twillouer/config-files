@@ -16,9 +16,9 @@ TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="kolo"
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="kolo"
+#ZSH_THEME="spaceship"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -69,21 +69,19 @@ export EDITOR=vim
 #PROMPT='%B%F{green}%n@%M %b%F{magenta}%d%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %B%F{blue}%T%{$reset_color%}%% '
 
 
+hash -d reu=~/Management/Réunions
 hash -d prj=~/Projets
 hash -d doc=~/Projets/documents
 hash -d docprj=~/Projets/documents/projets
-hash -d docreu=~/Projets/documents/reunions/hebdomadaireDT
 hash -d docgeo=~/Projets/documents/projets/geohub
+hash -d dochms=~/Projets/documents/projets/hms
 hash -d flow=~/Projets/deveryflow
-hash -d front=~/Projets/deveryfront
 hash -d dloc=~/Projets/deveryloc
 hash -d dgo=~/Projets/deverygo
 hash -d dutils=~/Projets/deveryutils
-hash -d dauth=~/Projets/deveryauth
 hash -d bazar=~/Projets/bazar
-hash -d puppetd=~/Projets/puppet-deveryware
+hash -d puppetd=~/Projets/puppet5-deveryware
 hash -d ansibled=~/Projets/ansible-deveryware
-hash -d fongo=~/src/fongo
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -119,9 +117,30 @@ unset JAVA_HOME
 export SDKMAN_DIR="/home/william/.sdkman"
 [[ -s "/home/william/.sdkman/bin/sdkman-init.sh" ]] && source "/home/william/.sdkman/bin/sdkman-init.sh"
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 source /home/william/.config/broot/launcher/bash/br
 
-unalias mvnd
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/william/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/william/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/william/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/william/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

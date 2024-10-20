@@ -109,7 +109,7 @@ fi
 #alias mvn3="M2_HOME="/usr/local/java/apache-maven-3.0" /usr/local/bin/mvn3"
 
 
-export MAVEN_OPTS="-Xmx2048m -Xms512m"
+export MAVEN_OPTS="-Xmx2048m -Xms512m -Dbuildtime.output.log=true -Dsmartbuilder.profiling=true"
 
 #alias mvn="mvn -T4.0C"
 
@@ -141,3 +141,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $HOME/.config/broot/launcher/bash/br
+. "$HOME/.cargo/env"
+
+complete -C /usr/local/bin/mc mc

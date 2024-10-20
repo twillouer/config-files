@@ -204,6 +204,41 @@ function fromunixtime() {
 	date -d @$1 "+%Y-%m-%d %T" 
 }
 
+function record-sound() {
+DATE=$(date "+%F_%H-%M-%S")
+FILE=$HOME/Audio/file_${DATE}.ogg
+gst-launch-1.0 -e  audiomixer name=mixer \
+! level \
+! audioresample ! audioconvert \
+! audio/x-raw,rate=22500,channels=2 ! vorbisenc name=enc quality=0.5 ! oggmux \
+! filesink location=${FILE} \
+ pulsesrc device=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor ! queue ! mixer. \
+ pulsesrc device=alsa_input.pci-0000_00_1f.3.analog-stereo ! queue ! mixer.
+}
+
+function whisper-record() {
+ set -x
+ DATE=$(date "+%F_%H-%M-%S") 
+ FILE=file_${DATE}.ogg
+#gst-launch-1.0 -e  audiomixer name=mixer \
+#! level \
+#! audioresample ! audioconvert \
+#! audio/x-raw,rate=22500,channels=2 ! vorbisenc name=enc quality=0.5 ! oggmux \
+#! filesink location=$HOME/Audio/${FILE} \
+# pulsesrc device=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor ! queue ! mixer. \
+# pulsesrc device=alsa_input.pci-0000_00_1f.3.analog-stereo ! queue ! mixer.
+
+
+gst-launch-1.0  -e pulsesrc device=alsa_output.usb-0b0e_Jabra_Link_380_08C8C242DD44-00.analog-stereo.monitor \
+	! queue \
+	! audioresample ! audioconvert \
+	! audio/x-raw,rate=44100,channels=2 ! vorbisenc name=enc quality=0.5 ! oggmux \
+	! filesink location=~/Audio/${FILE}
+ time docker run --rm --volume /home/william/Audio:/home/william/Audio --volume /etc/passwd:/etc/passwd --volume /etc/group:/etc/group -u 1000:1000 whisperx bash -c 'cd /home/william/Audio; whisperx --model large-v2 --compute_type int8 $HOME/$FILE'
+ # time docker run --rm --gpus all --volume ~/Audio:$HOME --volume /etc/passwd:/etc/passwd --volume /etc/group:/etc/group -u 1000:1000 openai-whisper bash -c "cd $HOME; whisper --model small --language fr $HOME/$FILE"
+}
+
+alias wr=whisper-record
 
 
 PATH=$PATH:~/.local/bin
@@ -220,7 +255,7 @@ mr () {
 #	assigneeId=$(gitlab user list --per-page 10000 | grep "\b${assigneeTrigraph}\b" -B 1 | sed -n 's/id: //p')
   	  projectName=$(git config --get remote.origin.url | sed -e 's/git@forge.deverywa.re://' -e 's/.git//')
 	  projectId=$(gitlab project get --id $projectName | sed -n 's/id: //p' )
-	  titleCaseTitle=$(python -c "print '$sourceBranch'.title()")
+	  titleCaseTitle=$(python -c "print ('$sourceBranch'.title())")
 #	  gitlab project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --assignee-id $assigneeId
 	  echo gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True
 	  gitlab -v project-merge-request create --project-id $projectId --source-branch $sourceBranch --target-branch $targetBranch --title $titleCaseTitle --remove-source-branch True || gitlab -v project-merge-request list --project-id $projectId  --source-branch $sourceBranch --target-branch $targetBranch
@@ -244,6 +279,13 @@ _asyncprof() {
 }
 
 alias asyncprof=_asyncprof
+
+jwtd() {
+    if [[ -x $(command -v jq) ]]; then
+         jq -R 'split(".") | .[0],.[1] | @base64d | fromjson' <<< "${1}"
+         echo "Signature: $(echo "${1}" | awk -F'.' '{print $3}')"
+    fi
+}
 
 #unset SSH_AGENT_PID
 #if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
@@ -279,3 +321,24 @@ export JSON_EXPORT_PATH="$HOME/.netbox-db.json"
 
  
 alias oprc="source /home/william/Projets/devops/openstack-rc-files/oprc"
+
+alias godapidemo="ssh gh-dapidemo-app-dc1-01.gh.int.dwadm.in"
+alias godapidemo1="ssh gh-dapidemo-app-dc1-01.gh.int.dwadm.in"
+alias godapidemo2="ssh gh-dapidemo-app-dc2-01.gh.int.dwadm.in"
+alias godsight="ssh dsight-app-dc1-01.deverysight.cloud.prod.dwadm.in"
+alias godsight1="ssh dsight-app-dc1-01.deverysight.cloud.prod.dwadm.in"
+alias godsight2="ssh dsight-app-dc2-01.deverysight.cloud.prod.dwadm.in"
+
+export DW=sbdwad6
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+function stopwatch(){
+  date1=`date +%s`;
+   while true; do
+    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
+    sleep 0.1
+   done
+}
+
